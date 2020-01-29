@@ -1,0 +1,14 @@
+{
+    "extends": "@eigenspace/codestyle/configs/typescript/base.tsconfig",
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "dist",
+        "typeRoots": [
+            "node_modules/@types"
+        ]
+    },
+    "include": [
+        "src"
+    ]
+}
