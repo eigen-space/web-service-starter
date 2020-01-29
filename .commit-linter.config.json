@@ -1,0 +1,7 @@
+{
+    "extends": "./node_modules/@eigenspace/commit-linter/.commit-linter.base.config.json",
+    "issuePrefixes": [
+        "CF-[0-9]+",
+        "microfix"
+    ]
+}
