@@ -1,5 +1,5 @@
 // @ts-ignore
-import * as fetch from 'node-fetch';
+import fetch from 'node-fetch';
 import { RequestMethod } from '../../../enums/request-method.enum';
 import { AnyDictionary, Dictionary } from '@eigenspace/common-types';
 import { environment } from '../../../../../environments/environment';
