@@ -27,8 +27,8 @@ export class Server {
 
         this.server = this.app.listen(this.port, '0.0.0.0', () => console.log(`app listening on port ${this.port}!`));
 
-        process.on('SIGTERM', this.shutDown);
-        process.on('SIGINT', this.shutDown);
+        process.on('SIGTERM', this.shutDown.bind(this));
+        process.on('SIGINT', this.shutDown.bind(this));
 
         this.server.on('connection', (connection: Socket) => {
             this.connections.push(connection);
