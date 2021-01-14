@@ -1,0 +1,54 @@
+{
+    "name": "@eigenspace/web-service-starter",
+    "version": "0.0.1",
+    "description": "Web starter for service",
+    "main": "index.ts",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/eigen-space/web-service-starter.git"
+    },
+    "scripts": {
+        "build": "yarn compile && yarn copy:assets",
+        "copy:assets": "node ./dev/scripts/copy-assets.js",
+        "compile": "tsc",
+        "start": "node ./dist/index.js",
+        "dev:start": "yarn build && node ./dist/index.js",
+        "lint:code": "eslint --ext .js,.ts",
+        "lint:fix": "yarn lint:code --fix",
+        "lint:markdown": "node ./node_modules/@eigenspace/codestyle/scripts/markdown-lint.js",
+        "lint": "yarn lint:code . && yarn lint:markdown",
+        "deploy:publish": "node node_modules/@eigenspace/helper-scripts/scripts/ci/publish.js",
+        "hooks:pre-push": "yarn lint",
+        "script:update-deps-remote": "npx -p @eigenspace/helper-scripts update-deps"
+    },
+    "husky": {
+        "hooks": {
+            "pre-push": "yarn hooks:pre-push",
+            "pre-commit": "lint-staged",
+            "commit-msg": "commit-linter --message=COMMIT_MESSAGE"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,tsx}": [
+            "yarn lint:fix",
+            "git add"
+        ]
+    },
+    "dependencies": {
+        "express": "4.16.4",
+        "node-fetch": "2.6.1"
+    },
+    "devDependencies": {
+        "@eigenspace/codestyle": "latest",
+        "@eigenspace/commit-linter": "latest",
+        "@eigenspace/common-types": "0.0.20",
+        "@eigenspace/helper-scripts": "2.0.2-dev",
+        "@types/express": "4.17.1",
+        "eslint": "5.16.0",
+        "eslint-plugin-eigenspace-script": "latest",
+        "husky": "2.3.0",
+        "lint-staged": "8.1.7",
+        "typescript": "3.3.3"
+    }
+}
